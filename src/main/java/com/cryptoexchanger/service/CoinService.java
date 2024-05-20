@@ -48,4 +48,9 @@ public class CoinService {
         Coin coin = coinCapMarket.findByTicker(ticker);
         return CoinDto.mapCoinToDto(coin);
     }
+
+    public List<CoinDto> getByTickerList(List<String> tickers) {
+        List<CoinDto> byTikersList = coinCapMarket.findByTikersList(tickers);
+        return byTikersList;
+    }
 }
