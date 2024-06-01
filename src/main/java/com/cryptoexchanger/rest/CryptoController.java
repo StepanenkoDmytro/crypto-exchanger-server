@@ -1,5 +1,6 @@
 package com.cryptoexchanger.rest;
 
+import com.cryptoexchanger.dto.CoinDto;
 import com.cryptoexchanger.dto.CoinsForClient;
 import com.cryptoexchanger.service.CoinService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,5 +35,11 @@ public class CryptoController {
         }
 
         return ResponseEntity.ok(coins);
+    }
+
+    @GetMapping("/list")
+    public List<CoinDto> getCoinsByTickerList(@RequestParam List<String> tickers) {
+        List<CoinDto> byTickerList = coinService.getByTickerList(tickers);
+        return byTickerList;
     }
 }
