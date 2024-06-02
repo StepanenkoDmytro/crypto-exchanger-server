@@ -42,4 +42,10 @@ public class CryptoController {
         List<CoinDto> byTickerList = coinService.getByTickerList(tickers);
         return byTickerList;
     }
+
+    @GetMapping("/by-id")
+    public ResponseEntity<CoinDto> getCoinsByTicker(@RequestParam String ticker) {
+        CoinDto byTicker = coinService.getByTicker(ticker);
+        return ResponseEntity.ok(byTicker);
+    }
 }

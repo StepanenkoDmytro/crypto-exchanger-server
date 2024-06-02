@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ExchangeRequestDTO {
-    private ExchangeCurrencyDTO convertedCurrency;
-    private ExchangeCurrencyDTO currencyToConvert;
+    private ExchangeCurrencyDTO currencyFrom;
+    private ExchangeCurrencyDTO currencyTo;
     private String recipientAddress;
 }

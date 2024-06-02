@@ -37,6 +37,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             Message message = update.getMessage();
             Long chatId = message.getChatId();
+//            System.out.println(chatId);
         }
     }
 
@@ -53,8 +54,8 @@ public class TelegramBotService extends TelegramLongPollingBot {
     }
 
     private String buildMessage(ExchangeRequestDTO exchangeRequest) {
-        ExchangeCurrencyDTO convertedCurrency = exchangeRequest.getConvertedCurrency();
-        ExchangeCurrencyDTO currencyToConvert = exchangeRequest.getCurrencyToConvert();
+        ExchangeCurrencyDTO convertedCurrency = exchangeRequest.getCurrencyFrom();
+        ExchangeCurrencyDTO currencyToConvert = exchangeRequest.getCurrencyTo();
         String recipientAddress = exchangeRequest.getRecipientAddress();
 
         StringBuilder messageBuilder = new StringBuilder();
