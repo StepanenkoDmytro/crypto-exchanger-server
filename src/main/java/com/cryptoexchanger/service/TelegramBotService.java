@@ -37,6 +37,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             Message message = update.getMessage();
             Long chatId = message.getChatId();
+            System.out.println(chatId);
         }
     }
 
@@ -53,16 +54,16 @@ public class TelegramBotService extends TelegramLongPollingBot {
     }
 
     private String buildMessage(ExchangeRequestDTO exchangeRequest) {
-        ExchangeCurrencyDTO convertedCurrency = exchangeRequest.getConvertedCurrency();
-        ExchangeCurrencyDTO currencyToConvert = exchangeRequest.getCurrencyToConvert();
+        ExchangeCurrencyDTO convertedCurrency = exchangeRequest.getCurrencyFrom();
+        ExchangeCurrencyDTO currencyToConvert = exchangeRequest.getCurrencyTo();
         String recipientAddress = exchangeRequest.getRecipientAddress();
 
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append("Exchange request received:\n\n");
         messageBuilder.append("Converted Currency:\n")
                 .append("Amount: ").append(convertedCurrency.getAmount()).append("\n")
-                .append("Name: ").append(convertedCurrency.getName()).append("\n")
-                .append("Currency To Convert:\n").append("\n\n")
+                .append("Name: ").append(convertedCurrency.getName()).append("\n\n")
+                .append("Currency To Convert:\n")
                 .append("Amount: ").append(currencyToConvert.getAmount()).append("\n")
                 .append("Name: ").append(currencyToConvert.getName()).append("\n")
                 .append("Symbol: ").append(currencyToConvert.getSymbol()).append("\n\n")
